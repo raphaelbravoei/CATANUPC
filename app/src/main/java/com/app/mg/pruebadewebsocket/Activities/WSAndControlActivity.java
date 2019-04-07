@@ -28,8 +28,6 @@ public class WSAndControlActivity extends AppCompatActivity {
     EditText etMessage;
     Button btnSendMessage;
 
-    //ImageButton btnUp, btnLeft, btnDown, btnRight;
-
     ConnectMethods connectMethods = new ConnectMethods();
     MessageMethods<MessageBody, WebsocketClient,WebSocket> messageMethods = new MessageMethods<>();
 
@@ -46,49 +44,18 @@ public class WSAndControlActivity extends AppCompatActivity {
 
         etMessage = findViewById(R.id.et_message);
         btnSendMessage = findViewById(R.id.btn_send_message);
-
-
-        //btnUp = findViewById(R.id.ib_up);
-        //btnLeft = findViewById(R.id.ib_left);
-        //btnDown = findViewById(R.id.ib_down);
-        //btnRight = findViewById(R.id.ib_right);
-
-
-        /*btnUp.setOnTouchListener(new RepeatListener(50, 50, new View.OnClickListener() {
+        btnSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SendMessageBody("UP");
+                final String message = etMessage.getText().toString();
+                SendMessageBody(message);
             }
-        }));
-
-        btnLeft.setOnTouchListener(new RepeatListener(50, 50, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SendMessageBody("LEFT");
-            }
-        }));
-
-        btnDown.setOnTouchListener(new RepeatListener(50, 50, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SendMessageBody("DOWN");
-            }
-        }));
-        btnRight.setOnTouchListener(new RepeatListener(50, 50, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SendMessageBody("RIGHT");
-            }
-        }));*/
-
-       /* btnSendMessage.setOnClickListener(v -> {
-            SendMessageBody(etMessage.getText().toString());
-        });*/
+        });
 
         SetWServerAndStart();
 
         Handler handler = new Handler();
-        //handler.postDelayed(this::connectWebSocket, 3500);
+        handler.postDelayed(this::connectWebSocket, 3500);
     }
 
     @Override

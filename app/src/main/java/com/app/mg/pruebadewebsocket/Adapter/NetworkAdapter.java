@@ -46,11 +46,11 @@ public class NetworkAdapter {
 
             networkAddress = itemView.findViewById(R.id.network_ip);
             btnConnectWS = itemView.findViewById(R.id.btn_connect_ws);
-            /*btnConnectWS.setOnClickListener(v -> {
+            btnConnectWS.setOnClickListener(v -> {
                 Intent intent = new Intent(v.getContext(),ControlWsActivity.class);
                 intent.putExtra("networkIp",networkAddress.getText().toString());
                 v.getContext().startActivity(intent);
-            });*/
+            });
         }
         public void updateViews(String networkIp) {
             networkAddress.setText(networkIp);
